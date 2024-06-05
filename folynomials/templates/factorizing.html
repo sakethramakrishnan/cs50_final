@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}Factorizing{% endblock %}
+
+<
+
+{% block main %}
+<head>
+    <link href="/static/styles.css" rel="stylesheet">
+</head>
+
+<h1>Solving Polynomials by Factorizing</h1>
+<h2>Factorizing involves breaking down the polynomial into simpler terms that can be multiplied to get the original polynomial. Follow these steps:</h2>
+<ol dir='left'>
+    <li dir='left'>Write the polynomial in standard form.</li>
+    <li>Identify common factors and group terms.</li>
+    <li>Use factoring techniques such as factoring by grouping, difference of squares, or trinomial factoring.</li>
+    <li>Set each factor equal to zero and solve for the roots.</li>
+</ol>
+<br>
+
+<p>For example, to factorize the polynomial \( x^2 - 5x + 6 \), we find:</p>
+<p>\[
+x^2 - 5x + 6 = (x - 2)(x - 3)
+\]</p>
+<p>Setting each factor to zero gives us the roots:</p>
+<p>\[
+x - 2 = 0 \quad \text{or} \quad x - 3 = 0
+\]</p>
+<p>Thus, the solutions are \( x = 2 \) and \( x = 3 \).</p>
+{% endblock %}

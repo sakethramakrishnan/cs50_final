@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+<!-- does not override the layout -->
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <form action='{{ url_for('calculator') }}' method='post'>
+
+        <h1>Quadratic Roots Calculator</h1>
+        <h2>Usage: input the \(a\), \(b\), and \(c\) in \(ax^2 + bx + c\)</h2>
+        
+
+        <center>
+            <div class='form-group'>
+                <!-- HTML has custom 'password' type -->
+                <input autocomplete='off' autofocus class='form-control narrow-input' name='a' placeholder='a' type='text' size=20>
+            </div>
+        </center>
+
+        <center>
+            <div class='form-group'>
+                <!-- HTML has custom 'password' type -->
+                <input autocomplete='off' autofocus class='form-control narrow-input' name='b' placeholder='b' type='text' size=20>
+            </div>
+        </center>
+
+        <center>
+            <div class='form-group'>
+                <!-- HTML has custom 'password' type -->
+                <input autocomplete='off' autofocus class='form-control narrow-input' name='c' placeholder='c' type='text' size=20>
+            </div>
+        </center>
+
+        <button class='btn btn-primary' type=submit>
+            Let's Solve!
+        </button>
+    </form>
+
+    
+    
+
+    {% if display %}
+        
+        {% if a > 0 and b > 0 and c > 0 %}
+        <h3>Inputted quadratic equation: \({{ a }}x^2 + {{ b }}x + {{ c }}\)</h3>
+
+        {% elif b < 0 and c > 0%}
+        <h3>Inputted quadratic equation: \({{ a }}x^2 - {{ -b }}x + {{ c }}\)</h3>
+
+        {% elif c < 0 and b > 0%}
+        <h3>Inputted quadratic equation: \({{ a }}x^2 + {{ b }}x - {{ -c  }}\)</h3>
+
+        {% elif b < 0 and c < 0%}
+        <h3>Inputted quadratic equation: \({{ a }}x^2 - {{ -b  }}x - {{ -c }}\)</h3>
+
+        {% endif %}
+            
+        
+
+        <h3>Solving with quadratic equation:</h3> <h4>\[x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\]</h4>
+
+        <h4>\[x = \frac{-({{b}}) \pm \sqrt{({{b}})^2 - 4({{a}})({{c}})}}{2({{a}})}\]</h4>
+
+        <h4>\[x = \frac{ {{ neg_b }} \pm \sqrt{ {{ discriminant }} }}{ {{ two_a }} }\]</h4>
+
+        {% if nature %}
+            <h4>{{ nature }} because the discriminant \[\sqrt{b^2 - 4ac}\] is less than \[0\]</h4>
+        {% else %}
+            {% if root2 %}
+                <h4>The two roots are:</h4>
+                <h4>\[ x_1 = {{ root1 }} \]</h4>
+                <h4>\[ x_2 = {{ root2 }} \]</h4>
+            {% else %}
+                <h4>The root is:</h4>
+                <h4>\[ x = {{ root1 }} \]</h4>
+            {% endif %}
+        {% endif %}
+
+        <h3>Let's check with graphing:</h3>
+        <center>
+            <div id="calculator" style="width: 800px; height: 600px;"></div>
+        </center>
+
+        <script>
+            var elt = document.getElementById('calculator');
+            var calculator = Desmos.GraphingCalculator(elt);
+            calculator.setExpression({ id: 'sample_quad', latex: '{{ a }}x^2 + {{ b }}x + {{ c }}', color: '#ff0000' });
+            calculator.setExpression({ id: 'x_axis', latex: 'y=0', color: '#blue' });
+            
+            {% if not nature %}
+                calculator.setExpression({ id: 'soln_1', latex: 'A=({{ root1 }}, 0)', color: 'black', label: '', showLabel: true });
+            {% endif %}
+                
+            
+            {% if root2 %}
+                calculator.setExpression({ id: 'soln_2', latex: 'B=({{ root2 }}, 0)', color: 'black', label: '', showLabel: true });
+            {% endif %}
+                
+        </script>
+        
+    {% endif %}
+        
+{% endblock %}
+

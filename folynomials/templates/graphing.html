@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Factorizing{% endblock %}
+
+
+{% block main %}
+
+
+<h1>Solving Polynomials by Graphing</h1>
+<h2>Graphing a polynomial function can help you visualize the roots of the equation. Follow these steps:</h2>
+<ol dir='left'>
+    <li>Plot the polynomial function on a graph.</li>
+    <li>Identify where the graph intersects the x-axis. These points are the roots of the polynomial.</li>
+    <li>Use graphing tools or software for more accurate plotting.</li>
+</ol>
+
+<center>
+    <div id="calculator" style="width: 800px; height: 600px;"></div>
+</center>
+
+<script>
+    var elt = document.getElementById('calculator');
+    var calculator = Desmos.GraphingCalculator(elt);
+    calculator.setExpression({ id: 'sample_quad', latex: 'x^2 + 4x - 5', color: '#ff0000' });
+    calculator.setExpression({ id: 'x_axis', latex: 'y=0', color: '#blue' });
+    calculator.setExpression({ id: 'soln_1', latex: 'A=(-5, 0)', color: 'black', label: '', showLabel: true });
+    calculator.setExpression({ id: 'soln_2', latex: 'B=(1, 0)', color: 'black', label: '', showLabel: true });
+  </script>
+{% endblock %}

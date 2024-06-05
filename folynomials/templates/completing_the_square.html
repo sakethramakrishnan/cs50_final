@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Completing the Square{% endblock %}
+
+{% block main %}
+<h1>Solving Polynomials by Completing the Square</h1>
+<h2>Completing the square is a method to solve quadratic equations. Follow these steps:</h2>
+<ol>
+    <li>Write the quadratic equation in the form \( ax^2 + bx + c = 0 \).</li>
+    <li>Move the constant term to the other side of the equation.</li>
+    <li>Add and subtract the square of half the coefficient of \( x \) to complete the square.</li>
+    <li>Factor the perfect square trinomial.</li>
+    <li>Take the square root of both sides and solve for \( x \).</li>
+</ol>
+
+<br><br>
+<h3>For example, consider the equation \( x^2 + 6x + 5 = 0 \):</h3>
+<ol>
+    <li>Move the constant term: \( x^2 + 6x = -5 \)</li>
+    <li>Complete the square: \( x^2 + 6x + 9 = 4 \)</li>
+    <li>Factor the perfect square trinomial: \( (x + 3)^2 = 4 \)</li>
+    <li>Solve for \( x \): &nbsp;&nbsp; \( x + 3 = \pm 2 \)</li>
+</ol>
+<p>Thus, the solutions are \( x = -1 \) and \( x = -5 \).</p>
+{% endblock %}

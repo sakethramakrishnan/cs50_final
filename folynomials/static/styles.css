@@ -1,0 +1,19 @@
+.red {
+    color: #a00;
+}
+
+
+
+li {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1.08rem;
+}
+
+ol{ padding-left:0; list-style-position:inside; }
+
+.narrow-input {
+    width: 150px; /* Adjust the width as needed */
+}
